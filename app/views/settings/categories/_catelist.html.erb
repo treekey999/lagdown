@@ -3,7 +3,7 @@
 
 <% @list.each do |blog|%>
 <h5><%= blog[:name]%></h5>
-  <% Category.where(blog_id: blog[:id]).order(:id).each do |c|%>
+  <% Category.where(blog_id: blog[:id]).order(:updated_at).each do |c|%>
 
     <div class="btn-group">
       <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= c.name%> <span class="caret"></span>
@@ -12,10 +12,10 @@
       <ul class="dropdown-menu" role="menu"><!--edit icon-->
         <li><%= gly_icon t('category.edit'),edit_settings_category_path(c),"edit","btn-xs"%></li>
         
-        <li class="divider"></li><!--change blog icon-->
+        <li class="divider"></li><!--change to another_blog icon-->
         <% @blogs.each do |b| %>
           <li>
-            <%= link_to b.name,settings_category_path(c,:blog_id => b.id) if b.id != c.blog_id%>
+            <%= link_to b.name,settings_category_path(c,:blog_id => b.id),data: {confirm: t('category.ask_change',:name => c.name)} if b.id != c.blog_id%>
           </li>
         <%end%>
 

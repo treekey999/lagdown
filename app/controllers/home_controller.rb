@@ -8,8 +8,13 @@ before_action :set_user, only: [:about]
 # 0508 edit
   def about
     @blogs = @user.blogs
-    # Blog.joins(:posts).where(:user_id => 1).count
-    @recent = Post.where(blog_id: @blogs.map{|b| b.id}).order(created_at: :desc).limit(13)
+    @recent = Post.where(blog_id: @blogs.map{|b| b.id}).order(created_at: :desc).limit(15)
+   
+    @photo = current_user.avatar
+    OAuthCredential.where(user_id: current_user.id,provider: current_user.photo_provider).each do |p|
+      @photo = p.auth_hash["info"]["image"].gsub('http://','https://')+ "?width=250&height=250&type=square"
+    end
+
   end
 
 

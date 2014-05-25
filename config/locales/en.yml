@@ -21,6 +21,9 @@ en:
     back: 返回
     all: 全部
     nil: 尚未分類
+    ask_change: "確定要移動【%{name}】？\n\n 【%{name}】底下的文章將會取消分類！"
+  profile:
+    upload_photo: 上傳大頭照
   post:
     view_count: 瀏覽次數
   activerecord:
@@ -32,6 +35,7 @@ en:
         about: 關於我
         created_at: 創建日期
         avatar: 大頭貼
+        photo_provider: 頭像來源
       blog:
         name: 部落格名稱
         subdomain: 子網域

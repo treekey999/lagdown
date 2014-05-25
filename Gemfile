@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
+gem 'open_uri_redirections'
+gem 'acts_as_taggable_on'
 gem 'dynamic_form'
 gem 'carrierwave'
 gem 'mini_magick'

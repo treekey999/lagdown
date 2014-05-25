@@ -55,8 +55,10 @@ class Settings::BlogsController < ApplicationController
     # @blog = Settings::Blog.find(params[:id])
 
     # 藉由判斷 user_id = current_user.id 來斷定使用者，是否有更好的解法？
-    user_id = Settings::Blog.find(params[:id]).user_id
-    @blog = Settings::Blog.find(params[:id]) if user_id == current_user.id
+    # user_id = Settings::Blog.find(params[:id]).user_id
+    # @blog = Settings::Blog.find(params[:id]) if user_id == current_user.id
+
+    @blog = current_user.blogs.find(params[:id]).becomes(Settings::Blog)
   end
 
   def blog_params

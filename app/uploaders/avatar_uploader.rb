@@ -5,9 +5,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process :resize_to_fill => [250,225]
-    version :user do
-      process :resize_to_fill => [250,225]
+  process :resize_to_fill => [250,250]
+    version :ver_250250 do
+      process :resize_to_fill => [250,250]
     end
 
   # Choose what kind of storage to use for this uploader:
@@ -18,6 +18,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+  def cache_dir
+    '/tmp/lagdown-cache'
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

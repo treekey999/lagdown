@@ -33,6 +33,8 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    acts_as_taggable_on (3.0.0.rc2)
+      rails (>= 3, < 5)
     arel (4.0.2)
     atomic (1.1.16)
     awesome_print (1.2.0)
@@ -167,6 +169,7 @@ GEM
       multi_json (~> 1.3)
       oauth2 (~> 0.9.3)
       omniauth (~> 1.2)
+    open_uri_redirections (0.1.4)
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.4)
@@ -306,6 +309,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_taggable_on
   awesome_print
   cancan
   capistrano
@@ -330,6 +334,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-github
   omniauth-google-oauth2
+  open_uri_redirections
   pg
   pry-debugger
   pry-rails

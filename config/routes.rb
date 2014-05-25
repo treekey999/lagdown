@@ -4,7 +4,7 @@ Lagdown::Application.routes.draw do
     devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations'}
     get 'select2/tags', format: :json
     get 'select2/results', format: :json
-    post 'preview' => 'posts#preview'
+    post 'preview' => 'posts#preview' 
     namespace :settings do
       resources :blogs do
         resources :posts, only: %i[new create edit update destroy]

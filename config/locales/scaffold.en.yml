@@ -2,6 +2,7 @@ en:
   action:
     back: Back
     edit: Edit
+    reset: Reset
   message:
     are_you_sure: Are you sure?
   crud:
