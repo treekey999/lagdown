@@ -80,8 +80,6 @@ private
     @blogs.each do |b| 
       @list.push({:name => b.name,:id => b.id})
     end
-    # 尚未分類's categroy_list
-    # @list.push({:name =>'尚未分類',:id => nil})
 
     @detail = {
     title: t('category.add'),

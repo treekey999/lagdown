@@ -1,4 +1,5 @@
 require "rss"
+include ActionView::Helpers::TextHelper
 class PostsController < ApplicationController
   before_action :set_blog, only: %i[index show rss]
   before_action :set_post, only: %i[show]
@@ -46,7 +47,7 @@ class PostsController < ApplicationController
           item.link = post_url(p, subdomain: @blog.subdomain)
           item.author = @blog.subdomain
           item.title = p.title
-          item.description = p.content.slice(1..100) + " ......"
+          item.description = truncate(p.content,length: 100)
           item.updated = p.updated_at.to_s
         end
       end
@@ -72,9 +73,9 @@ private
 
   def set_view_count
     # clear the setting_time ip_session
-    Session.sweep(10.second)
+    Session.sweep(30.second)
 
-    ip_nil = Session.where(ip: request.remote_ip).first.nil?
+    ip_nil = Session.where(ip: request.remote_ip,post_id: @post.id).first.nil?
 
     if ip_nil
       # add count
@@ -82,7 +83,7 @@ private
       count += 1
       @post.update_columns(view_count: count)
       # add ip session
-      Session.create(ip: request.remote_ip)
+      Session.create(ip: request.remote_ip,post_id: @post.id)
     else
     end
   end

@@ -43,7 +43,7 @@
                   【<%= t('crud.updated')%> : <%= post.updated_at%>】
                   【<%= t('crud.created')%> : <%= post.created_at%>】            
                 <hr>
-                <p class="list-group-item-text"><%= post.content.slice(0..150)%> ......</p>
+                <p class="list-group-item-text"><%= truncate(post.content,length: 200,omission: '...... more') %></p>
               <%end%>
             </div> 
           </td>

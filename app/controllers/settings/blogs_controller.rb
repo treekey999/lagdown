@@ -1,5 +1,7 @@
 class Settings::BlogsController < ApplicationController
   include SettingsConcern
+  include ActionView::Helpers::TextHelper
+  
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   authorize_resource
 
